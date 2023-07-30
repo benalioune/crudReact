@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product A",
+      "price": 20.5,
+      "checked": true
+    },
+    {
+      "id": 2,
+      "name": "Product B",
+      "price": 34.98,
+      "checked": true
+    },
+    {
+      "id": 3,
+      "name": "Product C",
+      "price": 76.99,
+      "checked": true
+    },
+    {
+      "id": 4,
+      "name": "Product D",
+      "price": 12.99,
+      "checked": false
+    },
+    {
+      "id": 5,
+      "name": "Product E",
+      "price": 15.99,
+      "checked": false
+    },
+    {
+      "name": "telephone",
+      "price": "1223",
+      "checked": "on",
+      "id": 6
+    },
+    {
+      "name": "ben",
+      "price": "1233",
+      "checked": "on",
+      "id": 7
+    },
+    {
+      "name": "docs",
+      "price": "079",
+      "checked": false,
+      "id": 8
+    }
+  ]
+}

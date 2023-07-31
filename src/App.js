@@ -8,6 +8,7 @@ import Home from './components/Home';
 import { useEffect, useState } from 'react';
 
 import NewProducts from './components/NewProducts';
+import EditProducts from './components/EditProducts';
 
 // import Home and Products components here
 
@@ -64,6 +65,8 @@ function App() {
           </li>
 
 
+
+
         </ul>
       </nav>
 
@@ -71,6 +74,7 @@ function App() {
         <Route path="home" element={<Home />}></Route>
         <Route path="products" element={<Products />}></Route>
         <Route path="newproducts" element={<NewProducts />}></Route>
+        <Route path="editproducts/:id" element={<EditProducts />}></Route>
       </Routes>
     </BrowserRouter>
   );

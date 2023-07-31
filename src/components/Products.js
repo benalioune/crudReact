@@ -6,15 +6,19 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
 import { deleteProduct, getProducts, checkProduct } from '../app/app';
+import { useNavigate } from 'react-router-dom';
 
 function Products() {
 
 
     const [query, setQuery] = useState("");
+
+    const navigate = useNavigate(); // hooks permettant de naviguer vers une autre route  en accedant a une foncton  
 
 
     const [productState, setProductState] = useState({
@@ -160,6 +164,11 @@ function Products() {
                                     <td onClick={() => handleDeleteProduct(product)} className='btn btn-outline-danger'>
                                         <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
 
+                                    </td>
+                                    <td>
+                                        <button onClick={() => navigate(`/EditProducts/${product.id}`)} className='btn btn-outline-success'>
+                                            <FontAwesomeIcon icon={faEdit} color="green"></FontAwesomeIcon>
+                                        </button>
                                     </td>
                                 </tr>
 

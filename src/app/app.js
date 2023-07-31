@@ -23,7 +23,7 @@ export const deleteProduct = (product) => {
 
 
 // recuperer le produit choisi en param
-export const getProduct = (id) => {
+export const getProductById = (id) => {
     return productsApi.get(`/products/${id}`)
 };
 

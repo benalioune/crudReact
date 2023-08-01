@@ -41,12 +41,6 @@
       "price": "1233",
       "checked": "on",
       "id": 7
-    },
-    {
-      "name": "docs",
-      "price": "079",
-      "checked": false,
-      "id": 8
     }
   ]
 }

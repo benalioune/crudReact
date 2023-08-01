@@ -8,7 +8,9 @@ import Home from './components/Home';
 import { useEffect, useState } from 'react';
 
 import NewProducts from './components/NewProducts';
+
 import EditProducts from './components/EditProducts';
+import { AppContext, useAppState } from './app/app';
 
 // import Home and Products components here
 
@@ -31,52 +33,65 @@ function App() {
 
   }
 
+
+
   return (
-    <BrowserRouter>
 
-      <nav className='card col-6 offset-3 p-2'>
-        <ul className="nav na-pills">
-
-          <li>
-            <Link onClick={() => setCurrentRoute("home")}
-              className={
-                currentRoute == "home"
-                  ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
-                  : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
-              } to={"/home"}>Home</Link>
-          </li>
-
-          <li>
-            <Link onClick={() => setCurrentRoute("products")}
-              className={
-                currentRoute == "products"
-                  ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
-                  : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
-              } to={"/products"}>Products</Link>
-          </li>
-
-          <li>
-            <Link onClick={() => setCurrentRoute("newproducts")}
-              className={
-                currentRoute == "newproducts"
-                  ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
-                  : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
-              } to={"/newproducts"}>New Product</Link>
-          </li>
+    // appContext.provider est la racine de notre application on y mets les objets que lon aimerait partager sur tous les components 
+    <AppContext.Provider value={useAppState()}>
 
 
+      <BrowserRouter>
+
+        <nav className='card col-6 offset-3 p-2'>
+          <ul className="nav na-pills">
+
+            <li>
+              <Link onClick={() => setCurrentRoute("home")}
+                className={
+                  currentRoute == "home"
+                    ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
+                    : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
+                } to={"/home"}>Home</Link>
+            </li>
+
+            <li>
+              <Link onClick={() => setCurrentRoute("products")}
+                className={
+                  currentRoute == "products"
+                    ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
+                    : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
+                } to={"/products"}>Products</Link>
+            </li>
+
+            <li>
+              <Link onClick={() => setCurrentRoute("newproducts")}
+                className={
+                  currentRoute == "newproducts"
+                    ? "btn btn-primary btn-lg mx-3 px-5 py-3 mt-2"
+                    : "btn btn-outline-primary btn-lg mx-3 px-5 py-3 mt-2"
+                } to={"/newproducts"}>New Product</Link>
+            </li>
 
 
-        </ul>
-      </nav>
 
-      <Routes>
-        <Route path="home" element={<Home />}></Route>
-        <Route path="products" element={<Products />}></Route>
-        <Route path="newproducts" element={<NewProducts />}></Route>
-        <Route path="editproducts/:id" element={<EditProducts />}></Route>
-      </Routes>
-    </BrowserRouter>
+
+
+
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="home" element={<Home />}></Route>
+          <Route path="products" element={<Products />}></Route>
+          <Route path="newproducts" element={<NewProducts />}></Route>
+          <Route path="editproducts/:id" element={<EditProducts />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+
+    </AppContext.Provider>
+
   );
 }
 

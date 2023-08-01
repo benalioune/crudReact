@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 
@@ -10,28 +10,24 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
-import { deleteProduct, getProducts, checkProduct } from '../app/app';
+import { deleteProduct, getProducts, checkProduct, AppContext } from '../app/app';
 import { useNavigate } from 'react-router-dom';
+import Cart from './Cart';
 
 function Products() {
 
+
+    const [productState, setProductState] = useContext(AppContext);
 
     const [query, setQuery] = useState("");
 
     const navigate = useNavigate(); // hooks permettant de naviguer vers une autre route  en accedant a une foncton  
 
-
-    const [productState, setProductState] = useState({
-        products: [],
-        currentPage: 1,
-        pageSize: 4,
-        keyword: "",
-        totalPages: 0
-    });
-
     useEffect(() => {
         handleGetProducts(productState.keyword, productState.currentPage, productState.pageSize); // une fois que le rendu de la page est generer handleGetProducts est appelé 
     }, []);
+
+
 
 
 
@@ -104,7 +100,7 @@ function Products() {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                            Signed in as: <a href="#login">Mark Otto</a>
+                            <Cart></Cart>
                         </Navbar.Text>
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-center">

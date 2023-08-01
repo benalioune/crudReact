@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { createContext, useContext, useState } from 'react';
+
+
+
+
 
 
 // tous les fonctions qui sont indispensable a notre logique sont dans ce fichier 
@@ -42,5 +47,28 @@ export const updateProduct = (product) => {
     return productsApi.put(`/products/${product.id}`, product);
 
 }
+
+export const AppContext = createContext();
+
+// creation d'un hook personnalisé qui permet de centralisé l'état 
+export const useAppState = () => {
+    // initialisation du state avec des valeurs par défaut
+    const initialState = {
+        products: [],
+        currentPage: 1,
+        pageSize: 4,
+        keyword: "",
+        totalPages: 0
+
+    };
+    // création et renvoi du customHook
+    const appState = useState(initialState);
+    return appState;
+
+
+
+}
+
+// l'etat de notre application
 
 
